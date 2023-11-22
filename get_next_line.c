@@ -6,7 +6,7 @@
 /*   By: orhaddao <orhaddao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:25:44 by orhaddao          #+#    #+#             */
-/*   Updated: 2023/11/22 20:52:14 by orhaddao         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:54:11 by orhaddao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,18 @@ char	*get_next_line(int fd)
 	return (extracted_line);
 }
 
-int main(void)
-{
-	int fd = open("file.txt", O_RDONLY);
-	char *line;
+// int main(void)
+// {
+// 	int fd = open("file.txt", O_RDONLY);
+// 	char *line;
 
-	line = get_next_line(fd);
-	printf("line: |%s|\n", line);
-	line = get_next_line(fd);
-	printf("line: |%s|\n", line);
-	line = get_next_line(fd);
-	printf("line: |%s|\n", line);
-	free(line);
-	close(fd);
-	return 0;
-}
+// 	line = get_next_line(fd);
+// 	printf("line: |%s|\n", line);
+// 	line = get_next_line(fd);
+// 	printf("line: |%s|\n", line);
+// 	line = get_next_line(fd);
+// 	printf("line: |%s|\n", line);
+// 	free(line);
+// 	close(fd);
+// 	return 0;
+// }

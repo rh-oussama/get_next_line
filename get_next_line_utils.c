@@ -6,11 +6,11 @@
 /*   By: orhaddao <orhaddao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:47:50 by orhaddao          #+#    #+#             */
-/*   Updated: 2023/11/22 20:46:10 by orhaddao         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:54:50 by orhaddao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"get_next_line.h"
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
