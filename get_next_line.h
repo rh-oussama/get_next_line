@@ -6,7 +6,7 @@
 /*   By: orhaddao <orhaddao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:46:53 by orhaddao          #+#    #+#             */
-/*   Updated: 2023/11/21 19:06:16 by orhaddao         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:19:55 by orhaddao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
-void	*ft_calloc(size_t nmemb, size_t size);
-void	*ft_memset(void *s, int c, size_t n);
+void	*ft_calloc(size_t n, size_t size);
 char	*get_file(int fd, char *tmp);
 char	*get_line_file(char *buffer);
 char	*get_next(char *buffer);

@@ -6,7 +6,7 @@
 /*   By: orhaddao <orhaddao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:25:44 by orhaddao          #+#    #+#             */
-/*   Updated: 2023/11/21 19:00:51 by orhaddao         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:28:38 by orhaddao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,21 @@ char	*get_file(int fd, char *tmp)
 {
 	char	*buffer;
 	int		bytes_read;
-	char	*t;
+	char	*new_tmp;
 
 	bytes_read = 1;
-	buffer = ft_calloc(BUFFER_SIZE + 1, 1);
+	buffer = (char *) ft_calloc(BUFFER_SIZE + 1, 1);
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
-		{
-			free(buffer);
-			free(tmp);
-			return (NULL);
-		}
+			return (free(buffer), free(tmp), NULL);
 		buffer[bytes_read] = '\0';
-		t = ft_strjoin(tmp, buffer);
+		new_tmp = ft_strjoin(tmp, buffer);
+		if (!new_tmp)
+			return (free(buffer), NULL);
 		free(tmp);
-		tmp = t;
+		tmp = new_tmp;
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
@@ -42,23 +40,23 @@ char	*get_file(int fd, char *tmp)
 
 char	*get_line_file(char *buffer)
 {
-	int		i;
+	size_t	i;
 	char	*line;
 
 	i = 0;
-	if (!buffer[i])
+	if (ft_strlen(buffer) == 0)
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	line = calloc(i + 2, 1);
+	line = ft_calloc(sizeof(char), i + 2);
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (buffer[i])
 	{
 		line[i] = buffer[i];
+		if (buffer[i] == '\n')
+			break ;
 		i++;
 	}
-	if (buffer[i] && buffer[i] == '\n')
-		line[i] = '\n';
 	return (line);
 }
 
@@ -101,18 +99,18 @@ char	*get_next_line(int fd)
 	return (extracted_line);
 }
 
-// int main(void)
-// {
-// 	int fd = open("file.txt", O_RDONLY);
-// 	char *line;
+int main(void)
+{
+	int fd = open("file.txt", O_RDONLY);
+	char *line;
 
-// 	line = get_next_line(fd);
-// 	printf("line: |%s|\n", line);
-// 	line = get_next_line(fd);
-// 	printf("line: |%s|\n", line);
-// 	line = get_next_line(fd);
-// 	printf("line: |%s|\n", line);
-// 	free(line);
-// 	close(fd);
-// 	return 0;
-// }
+	line = get_next_line(fd);
+	printf("line: |%s|\n", line);
+	line = get_next_line(fd);
+	printf("line: |%s|\n", line);
+	line = get_next_line(fd);
+	printf("line: |%s|\n", line);
+	free(line);
+	close(fd);
+	return 0;
+}

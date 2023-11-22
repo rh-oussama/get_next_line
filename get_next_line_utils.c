@@ -6,7 +6,7 @@
 /*   By: orhaddao <orhaddao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:47:50 by orhaddao          #+#    #+#             */
-/*   Updated: 2023/11/21 19:04:04 by orhaddao         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:15:54 by orhaddao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -64,31 +64,36 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strdup(const char *s)
 {
-	size_t			i;
-	unsigned char	value;
+	int		i;
+	char	*str;
 
-	value = (unsigned char) c;
 	i = 0;
-	while (i < n)
+	str = (char *) malloc((ft_strlen(s) * sizeof(char)) + 1);
+	if (str == 0)
+		return (0);
+	while (s[i])
 	{
-		((unsigned char *) s)[i] = value;
+		str[i] = s[i];
 		i++;
 	}
-	return (s);
+	str[i] = '\0';
+	return (str);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t n, size_t size)
 {
-	size_t	total;
+	size_t	i;
 	void	*ptr;
 
-	if (size && (SIZE_MAX / size) <= nmemb)
+	if (size && SIZE_MAX / size <= n)
 		return (NULL);
-	total = nmemb * size;
-	ptr = malloc(total);
-	if (ptr != NULL)
-		ft_memset(ptr, 0, total);
+	ptr = malloc(size * n);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < (n * size))
+		((unsigned char *)ptr)[i++] = 0;
 	return (ptr);
 }
