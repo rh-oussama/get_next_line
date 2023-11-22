@@ -6,7 +6,7 @@
 /*   By: orhaddao <orhaddao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:47:50 by orhaddao          #+#    #+#             */
-/*   Updated: 2023/11/22 20:15:54 by orhaddao         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:46:10 by orhaddao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,6 @@ char	*ft_strchr(const char *s, int c)
 	if (s[i] == (char) c)
 		return ((char *) &s[i]);
 	return (NULL);
-}
-
-char	*ft_strdup(const char *s)
-{
-	int		i;
-	char	*str;
-
-	i = 0;
-	str = (char *) malloc((ft_strlen(s) * sizeof(char)) + 1);
-	if (str == 0)
-		return (0);
-	while (s[i])
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
 }
 
 void	*ft_calloc(size_t n, size_t size)

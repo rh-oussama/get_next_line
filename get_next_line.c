@@ -6,7 +6,7 @@
 /*   By: orhaddao <orhaddao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:25:44 by orhaddao          #+#    #+#             */
-/*   Updated: 2023/11/22 20:28:38 by orhaddao         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:52:14 by orhaddao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ char	*get_file(int fd, char *tmp)
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	free (buffer);
-	return (tmp);
+	return (free (buffer), tmp);
 }
 
 char	*get_line_file(char *buffer)
@@ -44,7 +43,7 @@ char	*get_line_file(char *buffer)
 	char	*line;
 
 	i = 0;
-	if (ft_strlen(buffer) == 0)
+	if (buffer[i] == '\0')
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
@@ -71,17 +70,13 @@ char	*get_next(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
-	{
-		free(buffer);
-		return (NULL);
-	}
+		return (free(buffer), NULL);
 	new_buffer = ft_calloc((ft_strlen(buffer) - i + 1), 1);
 	i++;
 	j = 0;
 	while (buffer[i])
 		new_buffer[j++] = buffer[i++];
-	free (buffer);
-	return (new_buffer);
+	return (free (buffer), new_buffer);
 }
 
 char	*get_next_line(int fd)
